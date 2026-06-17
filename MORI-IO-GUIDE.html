@@ -110,8 +110,16 @@
 <li class="toctree-l3"><a class="reference internal" href="MORI-EP-GUIDE.html#reference-performance-deepseek-v3-config">Reference Performance (DeepSeek V3 config)</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="MORI-EP-GUIDE.html#profiling-with-mori-viz">10. Profiling with MORI-VIZ</a></li>
-<li class="toctree-l2"><a class="reference internal" href="MORI-EP-GUIDE.html#framework-integration">11. Framework Integration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="MORI-EP-GUIDE.html#tuning">10. Tuning</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="MORI-EP-GUIDE.html#overview">Overview</a></li>
+<li class="toctree-l3"><a class="reference internal" href="MORI-EP-GUIDE.html#tuning-config-files">Tuning Config Files</a></li>
+<li class="toctree-l3"><a class="reference internal" href="MORI-EP-GUIDE.html#intra-node-tuning">Intra-node Tuning</a></li>
+<li class="toctree-l3"><a class="reference internal" href="MORI-EP-GUIDE.html#inter-node-tuning">Inter-node Tuning</a></li>
+<li class="toctree-l3"><a class="reference internal" href="MORI-EP-GUIDE.html#tuning-on-a-new-gpu-platform">Tuning on a New GPU Platform</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="MORI-EP-GUIDE.html#profiling-with-mori-viz">11. Profiling with MORI-VIZ</a></li>
+<li class="toctree-l2"><a class="reference internal" href="MORI-EP-GUIDE.html#framework-integration">12. Framework Integration</a></li>
 <li class="toctree-l2"><a class="reference internal" href="MORI-EP-GUIDE.html#build-options">Build Options</a></li>
 <li class="toctree-l2"><a class="reference internal" href="MORI-EP-GUIDE.html#source-files">Source Files</a></li>
 </ul>
@@ -214,9 +222,25 @@
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="MORI-EP-BENCHMARK.html">MORI-EP Benchmark</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="MORI-EP-BENCHMARK.html#table-of-contents">Table of Contents</a></li>
-<li class="toctree-l2"><a class="reference internal" href="MORI-EP-BENCHMARK.html#intra-node">Intra-node</a></li>
-<li class="toctree-l2"><a class="reference internal" href="MORI-EP-BENCHMARK.html#inter-node">Inter-node</a></li>
-<li class="toctree-l2"><a class="reference internal" href="MORI-EP-BENCHMARK.html#nic-selection">NIC Selection</a></li>
+<li class="toctree-l2"><a class="reference internal" href="MORI-EP-BENCHMARK.html#intra-node">Intra-node</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="MORI-EP-BENCHMARK.html#profiling-intranode-kernels">Profiling intranode kernels</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="MORI-EP-BENCHMARK.html#inter-node">Inter-node</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="MORI-EP-BENCHMARK.html#nic-selection">NIC Selection</a></li>
+<li class="toctree-l3"><a class="reference internal" href="MORI-EP-BENCHMARK.html#bandwidth-computation">Bandwidth Computation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="MORI-EP-BENCHMARK.html#rdma-bandwidth">RDMA bandwidth</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="MORI-EP-BENCHMARK.html#algo-bw-vs-physical-bw">Algo BW vs Physical BW</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="MORI-EP-BENCHMARK.html#nvl-xgmi-bandwidth">NVL / XGMI bandwidth</a></li>
+<li class="toctree-l3"><a class="reference internal" href="MORI-EP-BENCHMARK.html#why-deepep-and-mori-rdma-token-counts-are-equivalent">Why DeepEP and Mori RDMA token counts are equivalent</a></li>
+<li class="toctree-l3"><a class="reference internal" href="MORI-EP-BENCHMARK.html#combine">Combine</a></li>
+<li class="toctree-l3"><a class="reference internal" href="MORI-EP-BENCHMARK.html#reference-print-bw-values-py">Reference: <code class="docutils literal notranslate"><span class="pre">print_bw_values.py</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="MORI-EP-BENCHMARK.html#profiling-internode-kernels">Profiling Internode Kernels</a></li>
+<li class="toctree-l3"><a class="reference internal" href="MORI-EP-BENCHMARK.html#analyzing-traces-with-analyze-ep-kernel-trace-py">Analyzing traces with <code class="docutils literal notranslate"><span class="pre">analyze_ep_kernel_trace.py</span></code></a></li>
+</ul>
+</li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="MORI-IO-BENCHMARK.html">MORI-IO Benchmark</a><ul>
@@ -251,6 +275,21 @@
 <li class="toctree-l2"><a class="reference internal" href="api/profiler.html#usage">Usage</a></li>
 <li class="toctree-l2"><a class="reference internal" href="api/profiler.html#export-to-perfetto">export_to_perfetto</a></li>
 <li class="toctree-l2"><a class="reference internal" href="api/profiler.html#c-profiler-apis">C++ Profiler APIs</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="api/umbp.html">UMBP Master Client</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="api/umbp.html#starting-the-master-server">Starting the Master Server</a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/umbp.html#umbptiertype">UMBPTierType</a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/umbp.html#umbpexternalkvnodematch">UMBPExternalKvNodeMatch</a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/umbp.html#umbpmasterclient">UMBPMasterClient</a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/umbp.html#cache-hit-tracking">Cache Hit Tracking</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="api/umbp.html#finding-hot-kv-blocks-the-typical-workflow">Finding hot KV blocks (the typical workflow)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="api/umbp.html#lifetime-cumulative-not-a-rate">Lifetime cumulative — not a rate</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="api/umbp.html#umbpexternalkvhitcountentry">UMBPExternalKvHitCountEntry</a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/umbp.html#usage-examples">Usage Examples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/umbp.html#end-to-end-example">End-to-End Example</a></li>
 </ul>
 </li>
 </ul>
@@ -372,7 +411,7 @@
 <td><p>Engine configuration: <code class="docutils literal notranslate"><span class="pre">host</span></code> (str), <code class="docutils literal notranslate"><span class="pre">port</span></code> (int)</p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">RdmaBackendConfig</span></code></p></td>
-<td><p>RDMA backend config: <code class="docutils literal notranslate"><span class="pre">qp_per_transfer</span></code>, <code class="docutils literal notranslate"><span class="pre">post_batch_size</span></code>, <code class="docutils literal notranslate"><span class="pre">num_worker_threads</span></code>, <code class="docutils literal notranslate"><span class="pre">poll_cq_mode</span></code>, <code class="docutils literal notranslate"><span class="pre">enable_notification</span></code></p></td>
+<td><p>RDMA backend config: <code class="docutils literal notranslate"><span class="pre">qp_per_transfer</span></code>, <code class="docutils literal notranslate"><span class="pre">post_batch_size</span></code>, <code class="docutils literal notranslate"><span class="pre">num_worker_threads</span></code>, <code class="docutils literal notranslate"><span class="pre">poll_cq_mode</span></code>, <code class="docutils literal notranslate"><span class="pre">enable_notification</span></code>, <code class="docutils literal notranslate"><span class="pre">enable_transfer_chunking</span></code>, <code class="docutils literal notranslate"><span class="pre">chunk_bytes</span></code>, <code class="docutils literal notranslate"><span class="pre">max_chunks_per_transfer</span></code>, <code class="docutils literal notranslate"><span class="pre">num_nics_per_transfer</span></code></p></td>
 </tr>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">XgmiBackendConfig</span></code></p></td>
 <td><p>XGMI backend config: <code class="docutils literal notranslate"><span class="pre">num_streams</span></code> (default 64), <code class="docutils literal notranslate"><span class="pre">num_events</span></code> (default 64)</p></td>
@@ -546,7 +585,7 @@
 <td><p>Set MORI-IO log verbosity level</p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">RdmaBackendConfig.qp_per_transfer</span></code></p></td>
-<td><p>Queue pairs per transfer (default 1, increase for higher bandwidth)</p></td>
+<td><p>Queue pairs per transfer (default 1, increase for higher bandwidth; with multi-NIC these QPs are spread across NICs, so aim for ≥2 QP per NIC)</p></td>
 </tr>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">RdmaBackendConfig.poll_cq_mode</span></code></p></td>
 <td><p>CQ polling mode: <code class="docutils literal notranslate"><span class="pre">POLLING</span></code> (busy-wait, lower latency) or <code class="docutils literal notranslate"><span class="pre">EVENT</span></code> (interrupt-driven)</p></td>
@@ -554,11 +593,29 @@
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">RdmaBackendConfig.enable_notification</span></code></p></td>
 <td><p>Enable target-side completion notifications (default <code class="docutils literal notranslate"><span class="pre">True</span></code>)</p></td>
 </tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">RdmaBackendConfig.enable_transfer_chunking</span></code></p></td>
+<td><p>Split a large single transfer into <code class="docutils literal notranslate"><span class="pre">chunk_bytes</span></code> chunks pipelined across QPs (default <code class="docutils literal notranslate"><span class="pre">False</span></code>). Lifts single-transfer bandwidth from single-outstanding (~28 GB/s) to NIC line rate. Forces single-thread inline posting (ignores <code class="docutils literal notranslate"><span class="pre">num_worker_threads</span></code>). Env: <code class="docutils literal notranslate"><span class="pre">MORI_IO_ENABLE_CHUNKING</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">RdmaBackendConfig.chunk_bytes</span></code></p></td>
+<td><p>Chunk size when chunking is on (default <code class="docutils literal notranslate"><span class="pre">65536</span></code> = 64 KB). Messages ≤ this are unchanged. Env: <code class="docutils literal notranslate"><span class="pre">MORI_IO_CHUNK_BYTES</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">RdmaBackendConfig.max_chunks_per_transfer</span></code></p></td>
+<td><p>Cap on chunks per transfer to bound WR/SQ usage (default <code class="docutils literal notranslate"><span class="pre">64</span></code>). Env: <code class="docutils literal notranslate"><span class="pre">MORI_IO_MAX_CHUNKS</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">RdmaBackendConfig.num_nics_per_transfer</span></code></p></td>
+<td><p>Stripe a transfer across this many NICs (default <code class="docutils literal notranslate"><span class="pre">1</span></code>). Adaptive by memory type: GPU memory stays single-NIC (PCIe-bound); host memory stripes across NUMA-local NICs. Env: <code class="docutils literal notranslate"><span class="pre">MORI_IO_NUM_NICS_PER_TRANSFER</span></code></p></td>
+</tr>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">IOEngineConfig.port</span> <span class="pre">=</span> <span class="pre">0</span></code></p></td>
 <td><p>Auto-bind to a free port</p></td>
 </tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">LD_LIBRARY_PATH</span></code></p></td>
+<td><p>MORI-IO loads libibverbs dynamically at runtime (<code class="docutils literal notranslate"><span class="pre">dlopen</span></code> of <code class="docutils literal notranslate"><span class="pre">libibverbs.so</span></code> / <code class="docutils literal notranslate"><span class="pre">libibverbs.so.1</span></code>) rather than linking it. To use an out-of-tree libibverbs, put its directory on <code class="docutils literal notranslate"><span class="pre">LD_LIBRARY_PATH</span></code>.</p></td>
+</tr>
 </tbody>
 </table>
+<p>UMBP (the upper-layer cache pool) exposes a separate set of runtime-tunable
+env vars for distributed master / pool client / SPDK proxy timing. Those are
+out of scope for MORI-IO; see <span class="xref myst"><code class="docutils literal notranslate"><span class="pre">src/umbp/doc/runtime-env-vars.md</span></code></span>.</p>
 </section>
 <section id="source-files">
 <h2>Source Files<a class="headerlink" href="#source-files" title="Link to this heading"></a></h2>

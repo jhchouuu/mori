@@ -110,8 +110,16 @@
 <li class="toctree-l3"><a class="reference internal" href="MORI-EP-GUIDE.html#reference-performance-deepseek-v3-config">Reference Performance (DeepSeek V3 config)</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="MORI-EP-GUIDE.html#profiling-with-mori-viz">10. Profiling with MORI-VIZ</a></li>
-<li class="toctree-l2"><a class="reference internal" href="MORI-EP-GUIDE.html#framework-integration">11. Framework Integration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="MORI-EP-GUIDE.html#tuning">10. Tuning</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="MORI-EP-GUIDE.html#overview">Overview</a></li>
+<li class="toctree-l3"><a class="reference internal" href="MORI-EP-GUIDE.html#tuning-config-files">Tuning Config Files</a></li>
+<li class="toctree-l3"><a class="reference internal" href="MORI-EP-GUIDE.html#intra-node-tuning">Intra-node Tuning</a></li>
+<li class="toctree-l3"><a class="reference internal" href="MORI-EP-GUIDE.html#inter-node-tuning">Inter-node Tuning</a></li>
+<li class="toctree-l3"><a class="reference internal" href="MORI-EP-GUIDE.html#tuning-on-a-new-gpu-platform">Tuning on a New GPU Platform</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="MORI-EP-GUIDE.html#profiling-with-mori-viz">11. Profiling with MORI-VIZ</a></li>
+<li class="toctree-l2"><a class="reference internal" href="MORI-EP-GUIDE.html#framework-integration">12. Framework Integration</a></li>
 <li class="toctree-l2"><a class="reference internal" href="MORI-EP-GUIDE.html#build-options">Build Options</a></li>
 <li class="toctree-l2"><a class="reference internal" href="MORI-EP-GUIDE.html#source-files">Source Files</a></li>
 </ul>
@@ -214,9 +222,25 @@
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="MORI-EP-BENCHMARK.html">MORI-EP Benchmark</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="MORI-EP-BENCHMARK.html#table-of-contents">Table of Contents</a></li>
-<li class="toctree-l2"><a class="reference internal" href="MORI-EP-BENCHMARK.html#intra-node">Intra-node</a></li>
-<li class="toctree-l2"><a class="reference internal" href="MORI-EP-BENCHMARK.html#inter-node">Inter-node</a></li>
-<li class="toctree-l2"><a class="reference internal" href="MORI-EP-BENCHMARK.html#nic-selection">NIC Selection</a></li>
+<li class="toctree-l2"><a class="reference internal" href="MORI-EP-BENCHMARK.html#intra-node">Intra-node</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="MORI-EP-BENCHMARK.html#profiling-intranode-kernels">Profiling intranode kernels</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="MORI-EP-BENCHMARK.html#inter-node">Inter-node</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="MORI-EP-BENCHMARK.html#nic-selection">NIC Selection</a></li>
+<li class="toctree-l3"><a class="reference internal" href="MORI-EP-BENCHMARK.html#bandwidth-computation">Bandwidth Computation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="MORI-EP-BENCHMARK.html#rdma-bandwidth">RDMA bandwidth</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="MORI-EP-BENCHMARK.html#algo-bw-vs-physical-bw">Algo BW vs Physical BW</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="MORI-EP-BENCHMARK.html#nvl-xgmi-bandwidth">NVL / XGMI bandwidth</a></li>
+<li class="toctree-l3"><a class="reference internal" href="MORI-EP-BENCHMARK.html#why-deepep-and-mori-rdma-token-counts-are-equivalent">Why DeepEP and Mori RDMA token counts are equivalent</a></li>
+<li class="toctree-l3"><a class="reference internal" href="MORI-EP-BENCHMARK.html#combine">Combine</a></li>
+<li class="toctree-l3"><a class="reference internal" href="MORI-EP-BENCHMARK.html#reference-print-bw-values-py">Reference: <code class="docutils literal notranslate"><span class="pre">print_bw_values.py</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="MORI-EP-BENCHMARK.html#profiling-internode-kernels">Profiling Internode Kernels</a></li>
+<li class="toctree-l3"><a class="reference internal" href="MORI-EP-BENCHMARK.html#analyzing-traces-with-analyze-ep-kernel-trace-py">Analyzing traces with <code class="docutils literal notranslate"><span class="pre">analyze_ep_kernel_trace.py</span></code></a></li>
+</ul>
+</li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="MORI-IO-BENCHMARK.html">MORI-IO Benchmark</a><ul>
@@ -251,6 +275,21 @@
 <li class="toctree-l2"><a class="reference internal" href="api/profiler.html#usage">Usage</a></li>
 <li class="toctree-l2"><a class="reference internal" href="api/profiler.html#export-to-perfetto">export_to_perfetto</a></li>
 <li class="toctree-l2"><a class="reference internal" href="api/profiler.html#c-profiler-apis">C++ Profiler APIs</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="api/umbp.html">UMBP Master Client</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="api/umbp.html#starting-the-master-server">Starting the Master Server</a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/umbp.html#umbptiertype">UMBPTierType</a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/umbp.html#umbpexternalkvnodematch">UMBPExternalKvNodeMatch</a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/umbp.html#umbpmasterclient">UMBPMasterClient</a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/umbp.html#cache-hit-tracking">Cache Hit Tracking</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="api/umbp.html#finding-hot-kv-blocks-the-typical-workflow">Finding hot KV blocks (the typical workflow)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="api/umbp.html#lifetime-cumulative-not-a-rate">Lifetime cumulative — not a rate</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="api/umbp.html#umbpexternalkvhitcountentry">UMBPExternalKvHitCountEntry</a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/umbp.html#usage-examples">Usage Examples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/umbp.html#end-to-end-example">End-to-End Example</a></li>
 </ul>
 </li>
 </ul>
@@ -419,7 +458,7 @@ cmake<span class="w"> </span>--build<span class="w"> </span>build
 </section>
 <section id="code-generation">
 <h3>Code Generation<a class="headerlink" href="#code-generation" title="Link to this heading"></a></h3>
-<p>The profiler relies on a code generation script <code class="docutils literal notranslate"><span class="pre">tools/generate_profiler_bindings.py</span></code>. This script:</p>
+<p>The profiler relies on a code generation script <code class="docutils literal notranslate"><span class="pre">tools/profiler/generate_profiler_bindings.py</span></code>. This script:</p>
 <ol class="arabic simple">
 <li><p>Scans <code class="docutils literal notranslate"><span class="pre">src/</span></code> for <code class="docutils literal notranslate"><span class="pre">MORI_TRACE_*</span></code> usage.</p></li>
 <li><p>Extracts unique slot names.</p></li>
